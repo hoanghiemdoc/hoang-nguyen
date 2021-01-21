@@ -1,217 +1,32 @@
-CREATE DATABASE [Customer_DB] ON PRIMARY
-( NAME = 'Customer_DB', FILENAME = 'C:\Program Files\Microsoft SQL Server\
-MSSQL11.MSSQLSERVER\MSSQL\DATA\Customer_DB.mdf')
-LOG ON
-( NAME = 'Customer_DB_log', FILENAME = 'C:\Program Files\Microsoft SQL Server\
-MSSQL11.MSSQLSERVER\MSSQL\DATA\Customer_DB_log.ldf')
-COLLATE SQL_Latin1_General_CP1_CI_AS
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
-
-ALTER DATABASE database_name
-{
-<add_or_modify_files>
-| <add_or_modify_filegroups>
-| <set_database_options>
-| MODIFY NAME = new_database_name
-| COLLATE collation_name
-}
-[;]
+﻿IF EXISTS (SELECT * FROM sys.databases WHERE Name='Example5')
+DROP DATABASE Example5
+GO
+CREATE DATABASE Example5
+GO
+USE Example5
+GO
+--Tạo bảng Lớp học
+CREATE TABLE LopHoc(
+MaLopHoc INT PRIMARY KEY IDENTITY,
+TenLopHoc VARCHAR(10)
+)
+GO
+--Tạo bảng Sinh viên có khóa ngoại là cột MaLopHoc, nối với bảng
+LopHoc
+CREATE TABLE SinhVien(
+MaSV int PRIMARY KEY,
+TenSV varchar(40),
+MaLopHoc int,
+CONSTRAINT fk FOREIGN KEY (MaLopHoc) REFERENCES LopHoc(MaLopHoc)
+)
+GO
+--Tạo bảng SanPham với một cột NULL, một cột NOT NULL
+CREATE TABLE SanPham (
+MaSP int NOT NULL,
+TénP varchar(40) NULL
+)
+GO
+--Tạo bảng với thuộc tính default cho cột Price
+CREATE TABLE StoreProduct(
+ProductID int NOT NULL,
+Name varchar(40) NOT NULL,
